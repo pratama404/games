@@ -1,0 +1,1317 @@
+<style type="text/css">
+
+ body {
+
+ background-color: #00c0ff
+
+ }
+
+ div,img {
+
+ position: absolute;
+
+ }
+
+ img {
+
+ width: 100px;
+
+ height: 100px;
+
+ }
+
+ .tm {
+
+ width: 40px;
+
+ height: 40px;
+
+ margin: 0px;
+
+ }
+
+ 
+
+ .tmb {
+
+ width: 40px;
+
+ height: 40px;
+
+ margin: 0px;
+
+ border:1px solid white;
+
+ background-color:black;
+
+ color:white;
+
+ }
+
+ .tma {
+
+ width: 60px;
+
+ height: 40px;
+
+ margin: 1px
+
+ }
+
+ .bt{
+
+ width: 30px;
+
+ height: 30px;
+
+ }
+
+ 
+
+ .inf{border:1px solid white; width: 100; color: lime; background-color:black; font-size:10px; margin:5px; padding:5px}
+
+ .ops,.mn1,.mn3,.caa{width:70px; height:20px; background-color:green; color:lime; text-align:left; border:1px solid black; margin:1px}
+
+ .mn1{background-color:yellow; text-align:center; color:black; width:103; height:40}
+
+ .mn2{margin:1px; padding:1px; text-align:center; color:black; width:30}
+
+ .mn3{background-color:aquamarine; text-align:center; color:red; height:40px}
+
+ .caa{background-color:red; width:30px; height:20px; color:white; text-align:center}
+
+b{color:white}
+
+</style>
+
+<script type="text/javascript">
+
+ exy=0
+
+ btsx = 350
+
+ info = "...."
+
+ btsy = 450
+
+ rl = 3
+
+ posx = 140
+
+ posy = 0
+
+ jm=-1
+
+ trn = 30
+
+ trna = 0
+
+ kalibrasi=-32
+
+ limit = 150
+
+ pb2 = btsx
+
+ tps = 460
+
+ fkt = 473
+
+ pb = 0
+
+ lomm = 0
+
+ auto = 0
+
+ inf = "...@@@??!!. Aduh capekkkk.. Istirahat dulu ya. Aduh tenagaku habis. "+jam()+". Namaku niki. "
+
+ inf = inf.split(". ")
+
+ timet=250;
+
+ ti=timet;
+
+ mn=1;
+
+ log=""
+
+ stx=100
+
+ pb = btsx;
+
+ pbx = 1
+
+ bra=0;
+
+ posb=30;
+
+ ambil=false
+
+ take=false
+
+ obyx="emp.png"
+
+ am=30
+
+ kbatu=0
+
+ ksayur=0
+
+ kbuah=0
+
+ ktai=0
+
+ kkayu=0
+
+ kbunga=0
+
+ kbiji=0
+
+ level=0
+
+ power=bc("power");
+
+ 
+
+ 
+
+ hbatu=0
+
+ hsayur=0
+
+ hbuah=0
+
+ htai=0
+
+ hkayu=0
+
+ hbunga=0
+
+ hbiji=0
+
+ hgmakan=0
+
+ 
+
+ gold=0
+
+ infr=-100
+
+ infs=20
+
+ amx=0
+
+ bttx=0
+
+ botx=0
+
+ function gamebaru(){
+
+ tl("batu",0);
+
+ kbatu=0
+
+ tl("sayur",0);
+
+ ksayur=0
+
+ tl("buah",0);
+
+ kbuah=0
+
+ tl("tai",0);
+
+ ktai=0
+
+ tl("kayu",0);
+
+ kkayu=0
+
+ tl("bunga",0);
+
+ kbunga=0
+
+ tl("biji",0);
+
+ kbiji=0
+
+ 
+
+ tl("power",10);
+
+ power=10
+
+ tl("gold",12000);
+
+ gold=12000;
+
+ 
+
+ level=1
+
+ }
+
+ 
+
+ 
+
+ 
+
+ function check1(){
+
+ power=bc("power");
+
+ if(power==null){tl("power",10);}
+
+ }
+
+ 
+
+ 
+
+ function status(){
+
+ jmm=new Date()/1000;
+
+ jmm=Math.ceil(jmm);
+
+ ene=jmm-bc("energi");
+
+ enerx=power-ene;
+
+ 
+
+ if(enerx<0){ene=0; enerx=0; pb=0; info="Aku lapar, gakuat jalan.";}
+
+ enex.innerHTML=(enerx)+"/"+power
+
+ // status energi
+
+ stat.innerHTML=bar(enerx);
+
+ }
+
+ 
+
+ obyekbelakang=("rmp.png pasar.png sampah.png ").split(" ");
+
+ jbt=obyekbelakang.length-1
+
+ function jam(){j=new Date(); return "Sudah jam "+j.getHours()+" lewat "+j.getMinutes()+" nih!!";}
+
+ 
+
+ function autt(){mn=1; stx=100; ti=timet; auto=0;
+
+  stx=stx-5;
+
+  if(stx<0){stx=0; }
+
+  }
+
+ 
+
+ function autoteks() {
+
+ if (auto == 1) {
+
+ jin = inf.length-1;
+
+ swtc = (Math.floor(n/200))%jin
+
+ info = inf[swtc]
+
+ }
+
+ }
+
+ function teks(tk) {
+
+ return '<div style="margin:4px; padding:px; position:absolute; top:'+((lomm+410))+'; left:'+((posx-80))+'; transform:rotate('+(Math.cos(n*0.08)*10)+'deg)"><font style="border:1px solid black; color: black; background-color:white;">'+tk+'</font></div>'
+
+ }
+
+ function rotasi(l, xx) {
+
+ return "rotate("+(Math.sin((n*xx)*r)*l)+"deg)";
+
+ }
+
+ function updown(xxx) {
+
+ return Math.cos(n*r)*xxx
+
+ }
+
+ 
+
+ 
+
+ nemux="bt.png bunga.png biji.png kayu.png tai.png buah.png sayur.png ";
+
+ nemu=nemux.split(" ")
+
+ function ub(a,b,c){c=c.split(a); c=c.join(b); return c;}
+
+ 
+
+ job=nemu.length-1
+
+ ackob=0
+
+ xr=4;
+
+ 
+
+ function temu(pxx){
+
+ tex="Ada Batu, ambil aja. Wahh, Aku nemu kembang ni. Aku nemu Benih tanaman nih. Ranting kayu, ambil aja. Duhhh, aku nemu tai ayam. Wah, aku nemu buah buahan. Hore, aku nemu sayuran. ".split(".")
+
+ dt1=ub("bt.png","0",pxx);
+
+ dt1=ub("bunga.png","1",dt1)
+
+ dt1=ub("biji.png","2",dt1)
+
+ dt1=ub("kayu.png","3",dt1)
+
+ dt1=ub("tai.png","4",dt1)
+
+ dt1=ub("buah.png","5",dt1)
+
+ dt1=ub("sayur.png","6",dt1)
+
+ 
+
+ 
+
+ return tex[dt1*1]
+
+ }
+
+ 
+
+ function bar(scl){
+
+ scx=((227/power)*scl)+1;
+
+ return '<div style="background-color:red; border:1px solid red; color:transparent; width:227px; height:20px;">:</div><div style="position:absolute; left:0px; top:0px; color:transparent; background-color:lime; width:'+scx+'px; height:20px; border:1px solid lime;">:</div><div style="border:2px solid black; position:absolute; left:0px; top:0px; color:transparent; width:227px; height:20px;">:</div>';
+
+ }
+
+ 
+
+ 
+
+ 
+
+ // niki
+
+ n=0
+
+ function niki() {
+
+ bot(n)
+
+ 
+
+ hgup=(1000*(power));
+
+ level=Math.ceil(power/10)
+
+ lvl.innerHTML=level
+
+ 
+
+ hbatu=100
+
+ hsayur=1000
+
+ hbuah=1500
+
+ htai=200
+
+ hkayu=400
+
+ hbunga=1500
+
+ hbiji=2000
+
+ hgmakan=2000
+
+ 
+
+ 
+
+ check1();
+
+ in1.innerHTML=kbatu
+
+ in2.innerHTML=kbuah
+
+ in3.innerHTML=ktai
+
+ in4.innerHTML=kkayu
+
+ in5.innerHTML=ksayur
+
+ in6.innerHTML=kbunga
+
+ in7.innerHTML=kbiji
+
+ 
+
+ 
+
+ 
+
+ infr=infr+xr; if(infr>240){xr=0;}
+
+ log="<div class='inf' style='left:"+infr+"; top:"+infs+"'><b style='color:yellow'>Gold:</b> <b>"+gold+"<br>Upgrade: "+(gold-hgup)+"</b><br><b style='color:fuchsia'>Koleksi ITEM</b><br>Batu: <b id='o1'>"+kbatu+"/+"+hbatu+"</b><br>Buah: <b id='o2'>"+kbuah+"/+"+hbuah+"</b><br>Tai: <b id='o3'>"+ktai+"/+"+htai+"</b><br>Kayu: <b id='o4'>"+kkayu+"/+"+hkayu+"</b><br>Sayur: <b id='o5'>"+ksayur+"/+"+hsayur+"</b><br>Bunga: <b id='o6'>"+kbunga+"/+"+hbunga+"</b><br>Bijian: <b id='o7'>"+kbiji+"/+"+hbiji+"</b></div>";
+
+ 
+
+ bra=bra+0.4;
+
+ brb=1+(Math.ceil(bra))%4;
+
+ brg.src="b"+brb+".png"
+
+ brx=((n*5)%(btsx+130))-130;
+
+ pxx=[100,150,200,250,300,350]
+
+ szb=[30,35,40,45,50,55]
+
+ if(brx<-50){pbx=Math.floor(Math.random()*6);}
+
+ setb=pxx[pbx];
+
+ setc=szb[pbx]
+
+ brg.style.left=brx
+
+ brg.style. top=setb
+
+ brg.style.width=setc
+
+ brg.style.height=setc
+
+ gn.style. top=310
+
+ aa=new Date()*1; aa=aa%100
+
+ fps=Math.ceil(n%24);
+
+ 
+
+ take=posx-pb2;
+
+ ambil=(take>-50&&take<10);
+
+ 
+
+ 
+
+ 
+
+  ti=ti-mn;
+
+ if(ti>0){mn=1;auto=0;}else{mn=0; auto=1; rl=6;}
+
+ awan.style.left = (((n/2)%(btsx+200))-50)-(posx)
+
+ awan.style. top = 180
+
+ ac = (Math.floor((n/150%3)*20))%3;
+
+ 
+
+ batu.src=obyx;
+
+ kup.src = "kp"+ac+".png";
+
+ kup.style. top = 290+Math.sin(n*0.06)*40
+
+ kup.style.left = posx+(Math.cos(n*0.09)*20)+30
+
+ 
+
+ // tukar
+
+ if (pb > btsx) {
+
+ pb = 0;
+
+ 
+
+ }
+
+ if (pb < 0) {
+
+ btxx=Math.floor(Math.random()*jbt)
+
+ rumput.src=obyekbelakang[btxx];
+
+ pb = btsx;
+
+ }
+
+ blkk = "1111111112233112233111111111111123211111111111".split("")
+
+ jbl = blkk.length-1
+
+ blk = blkk[(Math.floor(n/5))%jbl];
+
+ k.src = "h.png";
+
+ mt.src = "mt"+blk+".png";
+
+ mt.style. top=-14
+
+ mt.style.left = 10
+
+ rm1.src = "rm1.png";
+
+ rm1.style.left=-30+updown(-1)
+
+ rm1.style. top=-30
+
+ rm1.style.transform = rotasi(20, 0.5)
+
+ rm2.src = "rm2.png";
+
+ rm2.style.left = 0
+
+ rm2.style. top=-44
+
+ rm2.style.transform = rotasi(-40, 0.2)
+
+ b.style.transform = rotasi(2, 0.5)
+
+ b.src = "b.png";
+
+ b.style. top = 20+updown(1)
+
+ t1.src = "t.png";
+
+ t1.style. top = 10+updown(-1);
+
+ t2.src = "t.png";
+
+ t2.style. top = 10
+
+ k1.src = "k.png";
+
+ k1.style. top = 26
+
+ k2.src = "k.png";
+
+ k2.style. top = 26
+
+ kepala.style.transform = rotasi(2, 0.2)
+
+ if (rl == 1) {
+
+ pb = pb-1
+
+ pb2 = pb2-3
+
+ exy=updown(5, 2)-kalibrasi;
+
+ rumput.style.left = pb
+
+ rumput.style. top = updown(5, 2)-kalibrasi
+
+ batu.style.left = pb2
+
+ batu.style. top = updown(5, 2)-kalibrasi+fkt;
+
+ bayangan.style.left = posx
+
+ bayangan.style. top = tps+updown(5, 2)-kalibrasi
+
+ tanah.style. top = updown(5, 2)
+
+ nikita.style.transform = "rotate(0deg)"
+
+ posx = posx+1;
+
+ nikita.style.left = posx
+
+ nikita.style. top = updown(Math.sin(n*0.1)*2)-5
+
+ kepala.style.transform = rotasi(-3, 2)
+
+ kepala.style.left=-updown(3)
+
+ t1.style.transform = rotasi(40, 1);
+
+ t2.style.transform = rotasi(-40, 1);
+
+ k1.style.transform = rotasi(40, 1)
+
+ k1.style. top = 27+(updown(4, 1));
+
+ k2.style.transform = rotasi(-40, 1)
+
+ k2.style. top = 27+(-updown(4, 1));
+
+ }
+
+ if (rl == 2) {
+
+ pb = pb+1
+
+ pb2 = pb2+3
+
+ exy=updown(5, 2)-kalibrasi;
+
+ rumput.style.left = pb
+
+ rumput.style. top = updown(5, 2)-kalibrasi
+
+ batu.style.left = pb2
+
+ batu.style. top = updown(5, 2)-kalibrasi+fkt;
+
+ bayangan.style.left = posx
+
+ bayangan.style. top = tps+updown(5, 2)-kalibrasi
+
+ tanah.style. top = updown(5, 2)
+
+ nikita.style.transform = "rotate(0deg)"
+
+ posx = posx-1;
+
+ nikita.style.left = posx
+
+ nikita.style. top = updown(Math.sin(n*0.2)*10)-5
+
+ kepala.style.transform = rotasi(4, 1)
+
+ t1.style.transform = rotasi(40, 1);
+
+ t2.style.transform = rotasi(-40, 1);
+
+ k1.style.transform = rotasi(40, 1)
+
+ k1.style. top = 22+updown(-7)
+
+ k2.style.transform = rotasi(-40, 1)
+
+ k2.style. top = 22+updown(7)
+
+ }
+
+ if (rl == 3) {
+
+ rumput.style. top = (Math.sin(n*0.02)*5)-kalibrasi
+
+ batu.style. top = (Math.sin(n*0.02)*5)-kalibrasi+fkt;
+
+ bayangan.style.left = posx
+
+ bayangan.style. top = tps+updown(1, 1)-kalibrasi
+
+ tanah.style. top = (Math.sin(n*0.02)*5)
+
+ nikita.style.transform = "rotate(0deg)"
+
+ nikita.style.left = posx
+
+ nikita.style. top = updown(Math.sin(posx*0.2)*2)-5
+
+ kepala.style.transform = rotasi(2, 0.2)
+
+ t1.style.transform = rotasi(1, 1);
+
+ t2.style.transform = rotasi(1, 1);
+
+ k1.style. top = 22+updown(1)
+
+ k1.style.transform = rotasi(1, 1)
+
+ k2.style.transform = rotasi(1, 1)
+
+ k2.style. top = 22+updown()
+
+ }
+
+ // lari
+
+ if (rl == 5) {
+
+ 
+
+ pb = pb-4
+
+ pb2 = pb2-8
+
+ exy=updown(5, 2)-kalibrasi;
+
+ rumput.style.left = pb
+
+ rumput.style. top=-(Math.sin(n*0.2)*10)-kalibrasi
+
+ batu.style.left = pb2
+
+ batu.style. top=-(Math.sin(n*0.2)*10)-kalibrasi+fkt;
+
+ bayangan.style.left = posx
+
+ bayangan.style. top = tps+updown(5, 2)-kalibrasi
+
+ tanah.style. top=-(Math.sin(n*0.2)*10)
+
+ nikita.style.transform = "rotate(13deg)"
+
+ posx = posx+2;
+
+ nikita.style.left = posx
+
+ nikita.style. top=-20+updown(Math.sin(n*0.5)*10)
+
+ kepala.style.transform = rotasi(4, 2)
+
+ t1.style.transform = rotasi(-100,2);
+
+ t2.style.transform = rotasi(100, 2);
+
+ k1.style.transform = rotasi(-60, 2)
+
+ k1.style. top = 27+updown(-2)
+
+ k2.style.transform = rotasi(60, 2)
+
+ k2.style. top = 27+updown(2)
+
+ }
+
+ // lompat
+
+ if (rl == 4) {
+
+ lomm = (Math.sin(n*0.2)*40)-40;
+
+ pb = pb-3
+
+ pb2 = pb2-6
+
+ exy=updown(5, 2)-kalibrasi;
+
+ rumput.style.left = pb;
+
+ batu.style. top=-(Math.sin(n*0.2)*15)-kalibrasi+fkt
+
+ rumput.style. top=-(Math.sin(n*0.2)*15)-kalibrasi
+
+ bayangan.style.left = posx
+
+ bayangan.style. top = tps+updown(5, 2)-kalibrasi
+
+ tanah.style. top=-(Math.sin(n*0.2)*15)
+
+ batu.style.left = (pb2)
+
+ tanah.style. top=-(Math.sin(n*0.2)*15)
+
+ nikita.style.transform = rotasi(0, 1)
+
+ nikita.style.left = posx+((Math.cos(n*0.2))*25)
+
+ nikita.style. top = lomm
+
+ kepala.style.transform = rotasi(5, 1)
+
+ t1.style.transform = rotasi(100, 1);
+
+ t2.style.transform = rotasi(120, 1);
+
+ k1.style.transform = rotasi(-40, 1)
+
+ k2.style.transform = rotasi(-60, 1)
+
+ }
+
+ // duduk
+
+ if(rl==6){
+
+ nikita.style. top=posy+40
+
+ nikita.style.left=posx-40
+
+ nikita.style.transform="rotate("+(-30)+"deg)"
+
+ k1.style.transform="rotate("+(-60)+"deg)"
+
+ k2.style.transform="rotate("+(-60)+"deg)"
+
+ t1.style.transform="rotate(65deg)"
+
+ t2.style.transform="rotate(60deg)"
+
+ }
+
+ 
+
+ // ambil....
+
+ if(rl==7){
+
+ am=am-1;
+
+ if(am<0){rl=3; am=30;}
+
+ nikita.style.transform="rotate(45deg)"
+
+ nikita.style. top=posy-15;
+
+ nikita.style.left=posx+60;
+
+ t1.style.transform="rotate("+((Math.sin(n*0.1)*20)-40)+"deg)"
+
+ t2.style.transform="rotate(60deg)"
+
+ k1.style.transform="rotate(-45deg)"
+
+ k2.style.transform="rotate(-45deg)"
+
+ }
+
+ 
+
+ if(pb2<0){ackob=Math.floor(Math.random()*job);
+
+ obyx=nemu[ackob];
+
+ 
+
+ }
+
+ 
+
+ }
+
+function ambill(aax){
+
+if(aax=="bt.png"){kbatu=kbatu+1;}
+
+if(aax=="kayu.png"){kkayu=kkayu+1;}
+
+if(aax=="buah.png"){kbuah=kbuah+1;}
+
+if(aax=="bunga.png"){kbunga=kbunga+1;}
+
+if(aax=="biji.png"){kbiji=kbiji+1;}
+
+if(aax=="tai.png"){ktai=ktai+1;}
+
+if(aax=="sayur.png"){ksayur=ksayur+1;}
+
+}
+
+ r = 0.2;
+
+ n = 1.2;
+
+ menu=0
+
+ 
+
+ amx=1
+
+ iwa=iwb=iwc=iwd=iwe=iwf=iwg=iwh="green"
+
+ slx=0
+
+ function rest(){iwa=iwb=iwc=iwd=iwe=iwf=iwg=iwh="green"}
+
+ 
+
+ function tukar(sl){
+
+ 
+
+ rest()
+
+ 
+
+ if(sl==1){iwa="red"; slx=1;}
+
+ if(sl==2){iwb="red"; slx=2;}
+
+ if(sl==3){iwc="red"; slx=3;}
+
+ if(sl==4){iwd="red"; slx=4;}
+
+ if(sl==5){iwe="red"; slx=5;}
+
+ if(sl==6){iwf="red"; slx=6}
+
+ if(sl==7){iwg="red"; slx=7;}
+
+ 
+
+ 
+
+ 
+
+ i1.style.background=iwa
+
+ i2.style.background=iwb
+
+ i3.style.background=iwc
+
+ i4.style.background=iwd
+
+ i5.style.background=iwe
+
+ i6.style.background=iwf
+
+ i7.style.background=iwg
+
+ 
+
+ 
+
+ 
+
+ }
+
+ 
+
+ function jual(xpp){
+
+ if(slx==1){gold=gold+(ksayur*hsayur); ksayur=0;}
+
+ if(slx==2){gold=gold+(kbuah*hbuah); kbuah=0;}
+
+ if(slx==3){gold=gold+(kkayu*hkayu); kkayu=0;}
+
+ if(slx==4){gold=gold+(kbunga*hbunga); kbunga=0;}
+
+ if(slx==5){gold=gold+(kbatu*hbatu); kbatu=0;}
+
+ if(slx==6){gold=gold+(ktai*htai); ktai=0;}
+
+ if(slx==7){gold=gold+(kbiji*hbiji); kbiji=0;}
+
+ 
+
+ }
+
+ 
+
+ function tl(mmx,ssx){
+
+ localStorage.setItem(mmx,ssx)
+
+ }
+
+ function bc(mmx){
+
+ 
+
+ return localStorage.getItem(mmx)
+
+ }
+
+ 
+
+ function simpan(){
+
+ tl("sayur",ksayur);
+
+ tl("buah",kbuah);
+
+ tl("kayu",kkayu);
+
+ tl("bunga",kbunga);
+
+ tl("batu",kbatu);
+
+ tl("tai",ktai);
+
+ tl("biji",kbiji);
+
+ tl("gold",gold);
+
+ }
+
+ 
+
+ 
+
+ function buka(){
+
+ ksayur=bc("sayur")*1;
+
+ kbuah=bc("buah")*1;
+
+ kkayu=bc("kayu")*1;
+
+ kbunga=bc("bunga")*1;
+
+ ktai=bc("tai")*1;
+
+ kbiji=bc("biji")*1;
+
+ kbatu=bc("batu")*1;
+
+ gold=bc("gold")*1;
+
+ }
+
+ 
+
+ buka()
+
+ 
+
+ 
+
+ function menuc(pxx){
+
+ if(pxx==0){
+
+ menus.style.display="none"; amx=1;}else{menus.style.display="inline";}
+
+ }
+
+ 
+
+ setInterval('n=n+1; status(); pb2=pb2%btsx; if(pb2<0){pb2=btsx;} if(posx>btsx-limit){posx=btsx-limit;} if(posx<0){posx=0;} niki(); ot.innerHTML=log+teks(info,posx); autoteks()', 24);
+
+</script>
+
+<img id="gn" src="gn.png" style=" width:300px; height:300px" />
+
+<a id="ot"></a>
+
+<img id="brg" style=" width:80px; height:80px" />
+
+<img id="awan" src="aw.png" style=" width:150px; height:150px" />
+
+<div style="top:-10; left:0" id="tanah">
+
+ <div style="background-color:#007000; width:380; height:500px; left:0px; top:530">
+
+ &nbsp;
+
+ </div>
+
+ <div style="background-color:#dd7020; width:380; height:500; left:0px; top:610">
+
+ &nbsp;
+
+ </div>
+
+ <div style="background-color:#00c000; width:380; height:60; left:0px; top:510">
+
+ &nbsp;
+
+ </div>
+
+</div>
+
+<img id="bayangan" src="by.png" style="position:absolute;">
+
+<div style="left:0; top:450;">
+
+ <img id="rumput" style="" src="rmp.png" class="tm" style="position:absolute; " />
+
+ <div id="nikita">
+
+ <img id="t2" />
+
+ <img id="k1" />
+
+ <img id="k2" />
+
+ <img id="b" />
+
+ <div id="kepala">
+
+ <img id="rm2" />
+
+ <img id="rm1" />
+
+ <img id="k" />
+
+ <img id="mt" />
+
+ </div>
+
+ <img id="t1" />
+
+ </div>
+
+</div>
+
+<img id="kup" style="position:absolute; width:40px; height:40px; left:300px" />
+
+<img id="batu" style="width:80px; height:80px; position:absolute;">
+
+<div id="rbt" style="left:-15px; top:490">
+
+  <a id="bott"></a>
+
+  
+
+  </div>
+
+<div style="left:20; top:540; color:transparent">
+
+ =====<button class="tmb" onclick="if(enerx>0){rl=4; trna=1; info='Boink.. Boink..!!!'; autt();}"> ^ </button><br>
+
+ <button class="tmb" onclick="if(enerx>0){rl=2; info='Aku mundur yah..##@'; autt();}"> < </button>
+
+ <button class="tmb" onclick="if(ambil==true&&obyx!=='emp.png'){rl=7; ambill(obyx.split(',')[0]); info=temu(obyx); obyx='emp.png';}else{info='Ga ada apa apa kok..!!!'; rl='3';} autt();"> C </button>
+
+ <button class="tmb" onclick="if(enerx>0){rl=1; info='Aku jalan dulu ya..'; autt();}"> > </button>====
+
+ 
+
+ <button class="tma" onclick="if(gold>1000){dtxx=bc('energi'); txn=new Date(); txn=Math.ceil(txn/1000); tl('energi',txn); gold=gold-1000;}else{alert('GAME OVER - Klik C untuk permainan baru atau jual item penemuan untuk membeli makanan.');}autt()">MAKAN</button>==<button onclick="amx=amx+1; amx=amx%2; stt=['inline','none']; menus.style.display=stt[amx]; labs.style.display='none'; save.style.display='none';" class="mn3">Menu</button><br>
+
+ =====<button class="tmb" onclick="if(enerx>0){rl=5; info='Ajian kebelet pipis..#@'; autt();}"> v </button>
+
+ </div>
+
+ 
+
+ <div id="menus" style="display:none;position:absolute; left:250px; top:300px"> 
+
+ <button class="mn1" onclick="alert('Kamu bisa menjual item dengan menekan item tombol berwarna hijau dahulu, setelah tombol berubah warna merah tekan tombol kiri disebelah item yang sudah kamu pilih untuk menjualnya.');  info='Pilih item lalu klik kiri';">ITEM koleksi</button><br>
+
+ 
+
+ <button id="in1" class="caa" onclick="autt(); jual()"></button><button id="i5" class="ops" onclick="tukar(5)">Batu</button><br>
+
+ <button id="in2" class="caa" onclick="autt(); jual()"></button><button id="i2" class="ops" onclick="tukar(2)">Buah</button><br>
+
+ <button id="in3" class="caa" onclick="autt(); jual()"></button><button id="i6" class="ops" onclick="tukar(6)">Tai</button><br>
+
+ <button id="in4" class="caa" onclick="autt(); jual()"></button><button id="i3" class="ops" onclick="tukar(3)">Kayu</button><br>
+
+ <button id="in5" class="caa" onclick="autt(); jual()"></button><button id="i1" class="ops" onclick="tukar(1);">Sayur</button><br>
+
+ <button id="in6" class="caa" onclick="autt(); jual()"></button><button id="i4" class="ops" onclick="tukar(4)">Bunga</button><br>
+
+ <button id="in7" class="caa" onclick="autt(); jual()"></button><button id="i7" class="ops" onclick="tukar(7)">Bijian</button><br>
+
+ <button class="mn1" style="background-color:fuchsia" onclick="autt(); info='Laboratorium niiii'; labs.style.display='inline'; menuc(0)">Laborarorium</button><br>
+
+ <button class="mn1" style="background-color:red" onclick="autt(); info='Menyimpan permainan'; save.style.display='inline'; menuc(0)">SAVE GAME</button><br>
+
+ 
+
+ </div>
+
+ 
+
+<div style="position: absolute; top:27px; left:6px">
+
+Egy: <a id="enex">0</a><div id="stat"></div>, Lvl: <a id="lvl">0</a>
+
+ </div>
+
+ 
+
+ 
+
+ <div id="labs" style="position:absolute; display:none; left:250px; top:300px">
+
+ <button class="mn3" onclick="autt(); info='Ssssst...Ini menu rahasia';">Lab tech</button>
+
+ <button class="caa" onclick="labs.style.display='none'">X</button><br>
+
+ <button class="ops" style="font-size:13px; text-align:left" onclick="if(gold-hgup>0){power=(power*1)+10; gold=gold-hgup; tl('power',power); tl('gold',gold); info='Tambah kapasitas energi +10 ';}else{alert('Uang niki tidak cukup untuk upgrade kapasitas energi harganya '+hgup+', uang Niki sisa '+gold+', jadi kurang '+(hgup-gold)+' lagi.')}">+ENERGI</button><br>
+
+ <button class="ops" style="font-size:7px; text-align:left" onclick="botx=1; alert('Robot hanya bisa digunakan untuk memungut Batu, Ranting dan kotoran')">ROBOT Nx1</button><br>
+
+ <button class="ops" style="font-size:7px; text-align:left" onclick="alert('Sedang dalam pengembangan')">BERKEBUN</button><br>
+
+ <button class="ops" style="font-size:7px; text-align:left" onclick="alert('Sedang dalam pengembangan')">EDIT karakter</button><br>
+
+ <button class="ops" onclick="alert('NIKITA AIZAWA:\n Adalah adik kandung dari Kazumi ryuzaki (Dewi penjaga ruang hampa), ia meninggal bersama ibunya saat masih bayi ketika terjadi peperangan. \n Nikita berasal dari inverse universe bernama Holowsphere, namun meninggal dan tumbuh di dunia inversal (Sehingga ia terpisah dari kakak dan ibunya) karena Energy law, ia jadi tinggal dalam dunia dan zaman alternatif tanpa ingatan masa lalu atau masa depan.')">-History</button><br>
+
+ <button class="ops" onclick="alert('      Original\n\n Desain & Cerita:\n Kasmaridun \n\nPenulis program:\n Kasmaridun\n\n Website: \nhttp:// wwws . uiwap . com')">-Tentang</button><br>
+
+ 
+
+ </div>
+
+ 
+
+ <div id="save" style="position:absolute; display:none; left:250px; top:300px">
+
+ 
+
+ <button class="mn1" onclick="autt(); simpan(); alert('Permainan udah disimpan'); menuc(0); save.style.display='none';">SAVE</button><br>
+
+ <button class="mn1" style="background-color:green" onclick="autt(); buka(); info='Udah dimuat tuh'; menuc(0); save.style.display='none';">LOAD</button><br>
+
+ <button class="mn1" style="background-color:red" onclick="autt(); gamebaru(); alert('permainan baru sudah dimulai'); menuc(0); save.style.display='none';">NEW</button>
+
+  </div>
+
+  
+
+  
+
+  <script type="text/javascript">
+
+  exy=30
+
+  function bot(rr){
+
+  if(botx==1){
+
+  rra=rr;
+
+  rbt.style. top=480+(-exy)+30;
+
+  rbt.style.left=updown(Math.cos(rr*0.5));
+
+  if(rl==3||rl==6){rra=0;}
+
+  if(rl==1){rra=rr*5;}
+
+  if(rl==2){rra=-rr*5;}
+
+  if(rl==4){rra=rr*20;}
+
+  if(rl==5){rra=rr*20;}
+
+  a='<img style="left:20; top:-20" src="br.png"/>'
+
+  a=a+'<img style="transform:rotate('+(updown(rr%20)/10)+'deg);width:120px; height:120px; left:30; top:-20" src="tr.png"/>'
+
+  a=a+'<img style="transform:rotate('+(-(rr*4)%360)+'deg); left:30; top:-20" src="gigi.png"/>'
+
+  a=a+'<img style="width:80; height:80;transform:rotate('+((rr*8)%360)+'deg); left:25; top:-20" src="gigi.png"/>'
+
+  a=a+'<img style="top:10;width:80; height:80; transform:rotate('+((rra)%360)+'deg);" src="ban.png"/>'
+
+  a=a+'<img style="top:10;width:80; height:80; left:60px; transform:rotate('+((rra)%360)+'deg);" src="ban.png"/>'
+
+  
+
+  lim=140
+
+  if(pb2<lim&&obyx=="bt.png"||pb2<lim&&obyx=="kayu.png"||pb2<lim&&obyx=="tai.png"){ambill(obyx.split(',')[0]); obyx='emp.png'}
+
+  
+
+  bott.innerHTML=a;
+
+  }}
+
+  
+
+  
+
+  </script>
